@@ -1,0 +1,4 @@
+var arr1 = Array("Monday","Tuesday","Wednesday")  
+var rdd1 = sc.parallelize(arr1)   // First RDD is created
+var rdd2 = arr1.map(data => data) // Second RDD in created from the first RDD
+rdd2.collect.foreach(println)
