@@ -1,8 +1,8 @@
-Name,Housename,Alive,Allegiance,DoIlike,Age
+Name,Housename,Alive,Allegiance,HasAdirewolf,Age
 Arya,stark,yes,none,yes,19
-Sansa,stark,yes,none,no,22
-Ramsey,Bolton,no,lannisters,yes,25
-joffrey,baratheon,no,none,yes,19
-jamie,lannister,no,none,yes,45
+Sansa,stark,yes,none,yes,22
+Ramsey,Bolton,no,lannisters,no,25
+joffrey,baratheon,no,none,no,19
+jamie,lannister,no,none,no,45
 denarys,targaryan,no,none,no,25
 jon,snow,yes,none,yes,27
