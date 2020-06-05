@@ -1,2 +1,0 @@
-var rdd = spark.read.textFile("/home/user-name/sample.txt")  // Data is read into rdd
-rdd.collect.foreach(println)  // Data in the sample file is printed
