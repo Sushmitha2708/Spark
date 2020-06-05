@@ -1,0 +1,13 @@
+var SampleFile = sc.textFile("/home/user-name/Sample.csv)
+SampleFile.collect.foreach(println)   //The data in .csv file is displayed
+
+SampleFile.first()  //First row is displayed
+
+var name_column = SampleFile.map(_.split(",")(2))
+name_column.collect.foreach(println)  //The name column is displayed
+
+var filter_by_keyword1 = SampleFile.filter(line => line.contains ("Joe"))
+filter_by_keyword1.collect.foreach(println)
+
+var filter_by_keyword2 = SampleFile.filter(line => line.contains ("Henry")
+var unionrdd = filter_by_keyword.union(filter_by_keyword1) 
