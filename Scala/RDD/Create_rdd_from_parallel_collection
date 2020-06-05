@@ -1,0 +1,1 @@
+sc.parallelize(10 to 100,5).collect()  //Creates a RDD from a parallel collection
