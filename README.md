@@ -6,4 +6,6 @@ The next step was to modify the applications to add paralellism in order to run 
 ### What is Spark?
 Apache Spark is an open source unified computing engine and a set of libraries for parallel data processing on computer clusters. It runs from a computer to a cluster of thousands of servers which makes it easy to scale-up to big data processing. Sparks consists of Low-level APIs(RDDs, Distributed Variables), Structured APIs(Datasets, Dataframes, SQL) and other required components. Spark's APIs are consistent, composable and are designed to enable high performance by optimizing accross different libraries and functions composed together in a program.  
   
-it is 
+#### Spark Computing Engine  
+Unlike Apache Hadoop which includes both a storage system(HDFS) and a computing system(Map Reduce) and cannot run without the other, Spark runs well on storage and can we used broadly in various environments. Spark can be used with a variety of storage systems like Azure storage, Amazom S3, Apache Cassandra and Apache Kafka. Spark performs computations on data that resides in any of the systems in the cluster.    
+It is designed to support a wide range of data analytics tasks ranging from simple data loading and SQL queries to machine learning and streaming computation over the same computing enginewith a consistent set of Spark APIs. 
