@@ -18,4 +18,5 @@ Single processor machines do not have enough power and resources to perform comp
 #### Spark Application  
 Spark Application consists of a *driver process* , *set of executors* and a *cluster manager*.  
 Driver process is responsible for for maintaining information about the spark application, responding to user input and analyzing, distributing and scheduling work accross the executors. Driver process is the most essential part of a spark application which maintains all the relevant information during the lifetime of the project.  
-Executors are responsible for carrying out the work that the driver program assigns them.
+Executors are responsible for carrying out the work that the driver program assigns them and reporting the state of the computation back to the driver node.  
+The cluster Manager controls the physical machines and allocates resources to spark application. There can be mutliple spark applications running on a cluster at the same time. There are 3 major cluster managers i.e Spark's cluster manager, YARN & Mesos.
