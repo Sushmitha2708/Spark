@@ -25,7 +25,13 @@ For every executor to perform tasks in parallel, Spark breaks up the data into c
 #### Transformations  
 In spark, data structures are immutable i.e they can't be changed once they are created, they can only be modified and spark does this by giving it a set of instructions called *Transformations*. For example:  
 ` range = spark.range(100).toDF("number")`  
-`div = range.where("number % 2 = 0")`  
+`divide = range.where("number % 2 = 0")`  
+The above lines return no output because Spark will not act on Transformations until an *Action* is called. Spark will wait for the very last moment to execute the graph of computation instructions and this is called *Lazy Evaluation*. Instead of modifying the data immediately, when an operation needs to be performed Spark builds up a plan of transformations which are applied on the source data.  
+#### Action  
+Transformations are used to build up a logical transformation plan and to trigger the computation, an *action* is used. It instructs Spark to compute a result from the series of transformations and write the output to the data source. For example:  
+` divide.count()`  
+`Output: 50`  
+
 #### Spark's APIs  
 Spark has two fundamental set of APIs:  
 1. Low-level APIs(RDDs, Distributed Variables)  
