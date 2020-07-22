@@ -24,8 +24,8 @@ The cluster Manager controls the physical machines and allocates resources to sp
 For every executor to perform tasks in parallel, Spark breaks up the data into chunks called *partitions*. A partition is a collection of rows that sit on one physical machine in your cluster. It represents how data is pphysicaaly distributed across the cluster of machines during execution. If there's only 1 partition then Spark will have parallelism only for one, even if there are thousands of executors and if there are many partitions but only one executor, Spark will still have a parallelism of only one because there's only one computation resource.  
 #### Transformations  
 In spark, data structures are immutable i.e they can't be changed once they are created, they can only be modified and spark does this by giving it a set of instructions called *Transformations*. For example:  
-` range = spark.range(100).toDF("number")  
-div = range.where("number % 2 = 0")`  
+` range = spark.range(100).toDF("number")`  
+`div = range.where("number % 2 = 0")`  
 #### Spark's APIs  
 Spark has two fundamental set of APIs:  
 1. Low-level APIs(RDDs, Distributed Variables)  
