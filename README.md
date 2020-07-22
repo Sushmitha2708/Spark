@@ -16,4 +16,6 @@ Spark supports multiple widely used programming languages like Python, Java, Sca
 ### Architecture of Spark  
 Single processor machines do not have enough power and resources to perform computation on huge amounts of data. In spark, a cluster or a group of computers pools the resources of many machines together, giving user the ability to use all th resources as if they were a single computer. Spark provides a framework to manage and coordinate the execution of tasks on data across a cluster of computers. The cluster of machines that executes the tasks is managed by a *cluster manager* which is mainly YARN or Mesos. Spark applications must be submitted to these cluster managers which will grant resources required for the application.  
 #### Spark Application  
-Spark Application consists of a *driver process* , *set of executors* and a *cluster manager*.
+Spark Application consists of a *driver process* , *set of executors* and a *cluster manager*.  
+Driver process is responsible for for maintaining information about the spark application, responding to user input and analyzing, distributing and scheduling work accross the executors. Driver process is the most essential part of a spark application which maintains all the relevant information during the lifetime of the project.  
+Executors are responsible for carrying out the work that the driver program assigns them.
