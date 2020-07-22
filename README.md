@@ -14,3 +14,6 @@ Sparks libraries since its release have grown to provide more and more types of 
 Spark supports multiple widely used programming languages like Python, Java, Scala, R. It is designed to support a wide range of data analytics tasks ranging from simple data loading and SQL queries to machine learning and streaming computation over the same computing enginewith a consistent set of Spark APIs.  
 
 ### Architecture of Spark  
+Single processor machines do not have enough power and resources to perform computation on huge amounts of data. In spark, a cluster or a group of computers pools the resources of many machines together, giving user the ability to use all th resources as if they were a single computer. Spark provides a framework to manage and coordinate the execution of tasks on data across a cluster of computers. The cluster of machines that executes the tasks is managed by a *cluster manager* which is mainly YARN or Mesos. Spark applications must be submitted to these cluster managers which will grant resources required for the application.  
+#### Spark Application  
+Spark Application consists of a *driver process* , *set of executors* and a *cluster manager* .
