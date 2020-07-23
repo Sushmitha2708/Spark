@@ -28,12 +28,16 @@ In spark, data structures are immutable i.e they can't be changed once they are 
 `divide = range.where("number % 2 = 0")`    
 The above lines return no output because Spark will not act on Transformations until an *Action* is called. Spark will wait for the very last moment to execute the graph of computation instructions and this is called *Lazy Evaluation*. Instead of modifying the data immediately, when an operation needs to be performed Spark builds up a plan of transformations which are applied on the source data.  
 #### Action  
-Transformations are used to build up a logical transformation plan and to trigger the computation, an *action* is used. It instructs Spark to compute a result from the series of transformations and write the output to the data source. For example:  
+Transformations are used to build up a logical transformation plan and to trigger the computation, an *action* is used. Spark does not read data from the source until an action is called. It instructs Spark to compute a result from the series of transformations and write the output to the data source. For example:  
 ` divide.count()`  
 `Output: 50`  
+### Spark's Toolset  
+Apache Spark has a vast ecosystem of tools and libraries. Spark's toolkit is composed of Spark's APIs(Low-level & High-level) and a series of Standard Libraries for additional functionality. Spark also has a built in command-line tool i.e *spark-submit* which makes application productiion easy and also lets user send the application code to a cluster and launch it to execute there and the application will run until it completes the task or encounters an error.  
 
 #### Spark's APIs  
 Spark has two fundamental set of APIs:  
-1. Low-level APIs(RDDs, Distributed Variables)  
-2. High-level APIs(Dataframes, Datasets,SQL)  
+1. Unstructured APIs(RDDs, Distributed Variables)  
+2. Structured APIs(Dataframes, Datasets,SQL)  
+**Unstructured APIs**:- Spark has a number of low-level APIs to allow arbitary java and python object manipulation via Resilient Distributed Datasets (RDDs). Everything in spark is built on RDDs. All high-level operations are also built on top of RDDs and compile down to these low-level tools for an efficient distributed execution. RDDs are lower than Dataframes because they reveal physical execution characteristics to end users. RDDs are mainly used to parallelize raw data that is stored in the memory of the driver machine.  
+**Structured APIs**:-
 
