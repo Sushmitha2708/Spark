@@ -35,9 +35,7 @@ Transformations are used to build up a logical transformation plan and to trigge
 Apache Spark has a vast ecosystem of tools and libraries. Spark's toolkit is composed of Spark's APIs(Low-level & High-level) and a series of Standard Libraries for additional functionality. Spark also has a built in command-line tool i.e *spark-submit* which makes application productiion easy and also lets user send the application code to a cluster and launch it to execute there and the application will run until it completes the task or encounters an error.  
 
 #### Spark's APIs  
-Spark has two fundamental set of APIs:  
-* Unstructured APIs(RDDs, Distributed Variables)  
-* Structured APIs(Dataframes, Datasets,SQL)  
+Spark has two fundamental set of APIs: Unstructured APIs(RDDs, Distributed Variables) & Structured APIs(Dataframes, Datasets,SQL)  
 **Unstructured APIs**:- Spark has a number of low-level APIs to allow arbitary java and python object manipulation via Resilient Distributed Datasets (RDDs). Everything in spark is built on RDDs. All high-level operations are also built on top of RDDs and compile down to these low-level tools for an efficient distributed execution. RDDs are lower than Dataframes because they reveal physical execution characteristics to end users. RDDs are mainly used to parallelize raw data that is stored in the memory of the driver machine.  
 **Structured APIs**:-
 
