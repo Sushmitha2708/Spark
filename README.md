@@ -36,8 +36,8 @@ Apache Spark has a vast ecosystem of tools and libraries. Spark's toolkit is com
 
 #### Spark's APIs  
 Spark has two fundamental set of APIs:  
-1. Unstructured APIs(RDDs, Distributed Variables)  
-2. Structured APIs(Dataframes, Datasets,SQL)
+* Unstructured APIs(RDDs, Distributed Variables)  
+* Structured APIs(Dataframes, Datasets,SQL)  
 **Unstructured APIs**:- Spark has a number of low-level APIs to allow arbitary java and python object manipulation via Resilient Distributed Datasets (RDDs). Everything in spark is built on RDDs. All high-level operations are also built on top of RDDs and compile down to these low-level tools for an efficient distributed execution. RDDs are lower than Dataframes because they reveal physical execution characteristics to end users. RDDs are mainly used to parallelize raw data that is stored in the memory of the driver machine.  
 **Structured APIs**:-
 
