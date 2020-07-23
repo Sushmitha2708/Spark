@@ -34,8 +34,13 @@ Transformations are used to build up a logical transformation plan and to trigge
 ### Spark's Toolset  
 Apache Spark has a vast ecosystem of tools and libraries. Spark's toolkit is composed of Spark's APIs(Low-level & High-level) and a series of Standard Libraries for additional functionality. Spark also has a built in command-line tool i.e *spark-submit* which makes application productiion easy and also lets user send the application code to a cluster and launch it to execute there and the application will run until it completes the task or encounters an error.  
 
-#### Spark's APIs  
+### Spark's APIs  
 Spark has two fundamental set of APIs: Unstructured APIs(RDDs, Distributed Variables) & Structured APIs(Dataframes, Datasets,SQL)  
-**Unstructured APIs**:- Spark has a number of low-level APIs to allow arbitary java and python object manipulation via Resilient Distributed Datasets (RDDs). Everything in spark is built on RDDs. All high-level operations are also built on top of RDDs and compile down to these low-level tools for an efficient distributed execution. RDDs are lower than Dataframes because they reveal physical execution characteristics to end users. RDDs are mainly used to parallelize raw data that is stored in the memory of the driver machine.  
-**Structured APIs**:-
+#### Unstructured APIs   
+Spark has a number of low-level APIs to allow arbitary java and python object manipulation via Resilient Distributed Datasets (RDDs). Everything in spark is built on RDDs. All high-level operations are also built on top of RDDs and compile down to these low-level tools for an efficient distributed execution. RDDs are lower than Dataframes because they reveal physical execution characteristics to end users. RDDs are mainly used to parallelize raw data that is stored in the memory of the driver machine.  
+#### Structured APIs  
+The Structures APIs are a tool for manipulating all sorts of data from unstructured log files to semi-structured CSV files to highly structured Parquet files. There are 3 types of structured APIs i.e *Datasets*, *DataFrames* & *SQL tables and views*. The majority of Structured APIs apply to both batch and streaming computation which means that using structured APIs it is easy to migrate from batch to streaming. These are used to write the majority of data flows in Spark.  
+#### DataFrames and DataSets  
+These are the 2 structured collections of Spark. These are table-like collectionswith rows and columns. Each column must have same number of rows in a collection and *null* can be used in the absence of any value. Each column also stores type informationthat must be consistent for every row in the collection. In Spark, Datasets and Dataframes are immutable , lazily evaluated plans that specify what operations to apply to data residing at a location to generate the output. DataFrames are *untyped* as spark maintains them completely and only checks whether those types line up those specified in the schema ar *runtime*. DatSets are *typed* abd checks whether types conform to the specification at *compile-time*. 
+
 
