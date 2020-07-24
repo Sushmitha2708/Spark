@@ -54,6 +54,15 @@ Spark code is executed across a cluster in these following steps:
 
 4. Spark then executes this Physical Plan on the cluster.  
 
-The user written code is submitted to spark through the console or via a aubmitted job. 
+The user written code is submitted to spark through the console or via a aubmitted job. Then it is passed through a *Catalyst Optimizer* which decides how the code must be executed a lays out a plan, both logical and physical and finally thecode is run and the result is returned to the user.  
+#### Logical Plan  
+The logical plan represents a set of abstract transformations that do not refer to executors or drivers, it is mainly to convert user's expression to a most optimized version.  
+In the first step, user code is converted into an *unresolved logical plan*. This plan is unresolved because although might be valid, the tables or columnsthat it refers to might or might not exist.  
+In the next phase of analysis, Spark uses a *Catalog*, a repository of all table and Dataframe information. Spark might reject this unsolved logical plan if the required table or column name does not exist in the catalog. If all the required data is present in the catalog the unresolved logical plan is converted to a *resolved logical plan*.  
+In the next step, the resolved logical plan is passed through a *Catalyst optimizer*, a collection of rules that attempt togenerate an *optimized logical plan* by pushing down predicates or selections.  
+#### Physical Plan  
+In the first step, Spark considers the optimized lpogical plan and begins the physical planning process. The Physical plan is also called as a *Spark Plan* and it specifies how the logical plan will be executed on the cluster by generating different *physical execution strategies*.  
+In the next step, all these physical execution strategies are compared through a *cost model*. The cost comparision involves choosing how to perform a given joinby looking at the physical attributes of a given table, no. of partitions etc. This cost model gives out the best physical plan as an output.  
+In the final step, upon selecting the best physical plan, Spark runs all the code over RDDs, the low-level APIs of Spark. Spark performs further optimizations at run-time and the generated result is returned to the user.
 
 
