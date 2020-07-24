@@ -50,6 +50,6 @@ Spark code is executed across a cluster in these following steps:
 : If avlid code, Spark converts this to a *Logical Plan*.  
 : Spark transfroms this Logical Plan to a Physical Plan, checking for optimizations along the way.  
 : Spark then executes this Physical Plan on the cluster.  
-The 
+The user written code is submitted to spark through the console or via a aubmitted job. 
 
 
