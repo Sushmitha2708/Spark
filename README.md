@@ -46,7 +46,7 @@ These are the 2 structured collections of Spark. These are table-like collection
 **Rows**:- A row is similar to a record of data. Each record in a dataframemust be of type *Row*. These rows can be created from SQL, from RDDs and from data sources.  
 #### Structured API Execution  
 Spark code is executed across a cluster in these following steps:  
-: Write Dataframe/Dataset/SQL code.  
+1. Write Dataframe/Dataset/SQL code.  
 : If avlid code, Spark converts this to a *Logical Plan*.  
 : Spark transfroms this Logical Plan to a Physical Plan, checking for optimizations along the way.  
 : Spark then executes this Physical Plan on the cluster.  
