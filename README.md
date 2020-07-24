@@ -48,9 +48,12 @@ These are the 2 structured collections of Spark. These are table-like collection
 Spark code is executed across a cluster in these following steps:  
 1. Write Dataframe/Dataset/SQL code.   
 
-: If avlid code, Spark converts this to a *Logical Plan*.  
-: Spark transfroms this Logical Plan to a Physical Plan, checking for optimizations along the way.  
-: Spark then executes this Physical Plan on the cluster.  
+2. If avlid code, Spark converts this to a *Logical Plan*.  
+
+3. Spark transfroms this Logical Plan to a Physical Plan, checking for optimizations along the way.  
+
+4. Spark then executes this Physical Plan on the cluster.  
+
 The user written code is submitted to spark through the console or via a aubmitted job. 
 
 
