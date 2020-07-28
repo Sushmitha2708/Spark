@@ -9,6 +9,13 @@
   - [Transformations](#transformations)
   - [Action](#action)
 - [Spark's Toolset](#sparks-toolset)
+- [Spark's APIs](#sparks-apis)
+  - [Unstructured APIs](#unstructured-apis)
+  - [Structured APIs](#structured-apis)
+  - [DataFrames and DataSets](#dataframes-and-datasets)
+- [Structured API Execution](#structured-api-execution)
+  - [Logical Plan](#logical-plan)
+  - [Physical Plan](#physical-plan)  
   
   
 ## The Big Data Problem
@@ -43,20 +50,20 @@ The above lines return no output because Spark will not act on Transformations u
 Transformations are used to build up a logical transformation plan and to trigger the computation, an *action* is used. Spark does not read data from the source until an action is called. It instructs Spark to compute a result from the series of transformations and write the output to the data source. For example:  
 ` divide.count()`  
 `Output: 50`  
-### Spark's Toolset  
+## Spark's Toolset  
 Apache Spark has a vast ecosystem of tools and libraries. Spark's toolkit is composed of Spark's APIs(Low-level & High-level) and a series of Standard Libraries for additional functionality. Spark also has a built in command-line tool i.e *spark-submit* which makes application productiion easy and also lets user send the application code to a cluster and launch it to execute there and the application will run until it completes the task or encounters an error.  
 
-### Spark's APIs  
+## Spark's APIs  
 Spark has two fundamental set of APIs: Unstructured APIs(RDDs, Distributed Variables) & Structured APIs(Dataframes, Datasets,SQL)  
-#### Unstructured APIs   
+### Unstructured APIs   
 Spark has a number of low-level APIs to allow arbitary java and python object manipulation via Resilient Distributed Datasets (RDDs). Everything in spark is built on RDDs. All high-level operations are also built on top of RDDs and compile down to these low-level tools for an efficient distributed execution. RDDs are lower than Dataframes because they reveal physical execution characteristics to end users. RDDs are mainly used to parallelize raw data that is stored in the memory of the driver machine.  
-#### Structured APIs  
+### Structured APIs  
 The Structures APIs are a tool for manipulating all sorts of data from unstructured log files to semi-structured CSV files to highly structured Parquet files. There are 3 types of structured APIs i.e *Datasets*, *DataFrames* & *SQL tables and views*. The majority of Structured APIs apply to both batch and streaming computation which means that using structured APIs it is easy to migrate from batch to streaming. These are used to write the majority of data flows in Spark.  
-#### DataFrames and DataSets  
+### DataFrames and DataSets  
 These are the 2 structured collections of Spark. These are table-like collectionswith rows and columns. Each column must have same number of rows in a collection and *null* can be used in the absence of any value. Each column also stores type informationthat must be consistent for every row in the collection. In Spark, Datasets and Dataframes are immutable , lazily evaluated plans that specify what operations to apply to data residing at a location to generate the output. DataFrames are *untyped* as spark maintains them completely and only checks whether those types line up those specified in the schema ar *runtime*. DatSets are *typed* abd checks whether types conform to the specification at *compile-time*.  
 **Columns**:- Columns are a simple datatype like an integer or a string. They are similar to columns in a spreadsheet.  
 **Rows**:- A row is similar to a record of data. Each record in a dataframemust be of type *Row*. These rows can be created from SQL, from RDDs and from data sources.  
-#### Structured API Execution  
+## Structured API Execution  
 Spark code is executed across a cluster in these following steps:  
 1. Write Dataframe/Dataset/SQL code.   
 
@@ -67,12 +74,12 @@ Spark code is executed across a cluster in these following steps:
 4. Spark then executes this Physical Plan on the cluster.  
 
 The user written code is submitted to spark through the console or via a aubmitted job. Then it is passed through a *Catalyst Optimizer* which decides how the code must be executed a lays out a plan, both logical and physical and finally thecode is run and the result is returned to the user.  
-#### Logical Plan  
+### Logical Plan  
 The logical plan represents a set of abstract transformations that do not refer to executors or drivers, it is mainly to convert user's expression to a most optimized version.  
 In the first step, user code is converted into an *unresolved logical plan*. This plan is unresolved because although might be valid, the tables or columnsthat it refers to might or might not exist.  
 In the next phase of analysis, Spark uses a *Catalog*, a repository of all table and Dataframe information. Spark might reject this unsolved logical plan if the required table or column name does not exist in the catalog. If all the required data is present in the catalog the unresolved logical plan is converted to a *resolved logical plan*.  
 In the next step, the resolved logical plan is passed through a *Catalyst optimizer*, a collection of rules that attempt togenerate an *optimized logical plan* by pushing down predicates or selections.  
-#### Physical Plan  
+### Physical Plan  
 In the first step, Spark considers the optimized lpogical plan and begins the physical planning process. The Physical plan is also called as a *Spark Plan* and it specifies how the logical plan will be executed on the cluster by generating different *physical execution strategies*.  
 In the next step, all these physical execution strategies are compared through a *cost model*. The cost comparision involves choosing how to perform a given joinby looking at the physical attributes of a given table, no. of partitions etc. This cost model gives out the best physical plan as an output.  
 In the final step, upon selecting the best physical plan, Spark runs all the code over RDDs, the low-level APIs of Spark. Spark performs further optimizations at run-time and the generated result is returned to the user.
