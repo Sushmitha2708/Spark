@@ -1,0 +1,6 @@
+df = spark.read.format("json").load("sample_data1.json")
+df.createOrReplaceTempView("dftable")
+
+df.withColumn("One", lit(1)).show(5)
+#OR
+df.withColumn("withihcountry", expr("ORIGIN_COUNTRY_NAME == DEST_COUNTRY_NAME")).show(5)
