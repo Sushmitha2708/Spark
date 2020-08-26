@@ -1,0 +1,5 @@
+im
+
+
+df= spark.read.format("json").load("sample_data1.json")
+df.createorreplaceTempView("dfTable")
