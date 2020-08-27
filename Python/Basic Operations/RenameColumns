@@ -1,4 +1,0 @@
-df = spark.read.format("json").load("sample_data1.json")
-df.createOrReplaceTempView("dftable")
-
-df.withColumnsRenamed("DEST_COUNTRY_NAME","destination").columns
