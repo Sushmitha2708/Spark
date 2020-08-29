@@ -1,9 +1,9 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import Row
-spark = SparkSession.builder.appName("Python Spark SQL basic example").getOrCreate()
+spark = SparkSession.builder.appName("PySpark example").getOrCreate()
 
 
-df = spark.read.format("json").load("F:/Spark/Python/Basic Operations/data/sample_data1.json")
+df = spark.read.format("json").load("/data/sample_data1.json")
 df.createOrReplaceTempView("dftable")
 
 #To append to dataframe, UNION of original dataframe along with the new dataframe
