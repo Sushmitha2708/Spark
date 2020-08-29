@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-spark = SparkSession.builder.appName("Python Spark SQL basic example").getOrCreate()
+spark = SparkSession.builder.appName("Pyspark example").getOrCreate()
 
 from pyspark.sql import Row
 from pyspark.sql.types import StructField, StringType, StructType, LongType
