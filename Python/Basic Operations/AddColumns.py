@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import lit,expr
+from pyspark.sql.functions import lit
 spark = SparkSession.builder.appName("Pyspark example").getOrCreate()
 
 
