@@ -16,4 +16,4 @@ df.select(size(split(col("Description")," "))).show(3)
 df.select(array_contains(split(col("Description")," "),"WHITE")).show(3)
 
 #'explode' method takes a column of arrays and creates a new row oer value in the array
-df.withColumn("split",split(col("Description")," ")).withColumn("exploded",explode(col("split"))).select("Description","exploded").show(2)
+df.withColumn("split",split(col("Description")," ")).withColumn("exploded",explode(col("split"))).select("Description","exploded").show(7)
